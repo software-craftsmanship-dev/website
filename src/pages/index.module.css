@@ -1,0 +1,139 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+.heroBanner {
+    padding: 4rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+@media screen and (max-width: 996px) {
+    .heroBanner {
+        padding: 2rem;
+    }
+}
+
+.buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.manifestContainer {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 1rem 4rem;
+    background: var(--site-bg);
+}
+
+.manifestCard {
+    max-width: 760px;
+    width: 100%;
+    background: transparent;
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    box-shadow: none;
+    border: 1px solid rgba(180, 140, 255, 0.12);
+    margin: 0 auto;
+}
+
+.manifestHeader {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(180, 140, 255, 0.12);
+    padding-bottom: 1rem;
+}
+
+.manifestTitle {
+    text-align: center;
+    line-height: 1.2;
+}
+
+.preamble {
+    display: block;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-family: sans-serif;
+}
+
+.coreSubject {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.manifestSubtitle {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--manifest-subtitle-color);
+}
+
+.manifestContent {
+    margin-top: 1.5rem;
+    color: var(--manifest-text-color);
+    line-height: 1.8;
+}
+
+/* Justified text for paragraphs and list items on the homepage */
+.manifestContent p,
+.manifestContent li {
+    text-align: justify;
+    text-justify: inter-word;
+    hyphens: auto;
+}
+
+/* Slightly reduce spacing between justified blocks for a compact, narrow look */
+.manifestContent p {
+    margin-bottom: 0.8rem;
+}
+.manifestContent li {
+    margin-bottom: 0.7rem;
+    color: var(--manifest-list-text);
+}
+.manifestContent strong {
+    color: var(--manifest-list-intro);
+}
+
+.manifestContent h2 {
+    font-size: 1.4rem;
+    margin-bottom: 1rem;
+    color: var(--manifest-heading-color);
+}
+
+.manifestContent p {
+    margin-bottom: 0.9rem;
+}
+
+.manifestContent ol {
+    padding-left: 1.2rem;
+    margin-top: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.manifestLicenseLink {
+    color: var(--ifm-color-primary);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.manifestLicenseLink:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+    .manifestCard {
+        padding: 1.75rem 1.25rem;
+        max-width: 92vw;
+    }
+
+    .manifestTitle {
+        font-size: 2rem;
+    }
+}

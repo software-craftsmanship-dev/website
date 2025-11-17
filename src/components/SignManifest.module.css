@@ -1,0 +1,116 @@
+.signManifest {
+    /* Container styles */
+}
+
+.signButtons {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.signButtons button {
+    flex: 1 1 calc(33% - 0.75rem);
+    min-width: 180px;
+}
+
+@media (max-width: 600px) {
+    .signButtons {
+        flex-direction: column;
+    }
+
+    .signButtons button {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+}
+
+.signedState {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.actionButtons {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.reLoginNotice {
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+    background: #ff60601a;
+    border: 1px solid rgba(255, 193, 7, 0.3);
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
+
+.successNotice {
+    margin-bottom: 0.75rem;
+    padding: 0.75rem;
+    background: rgba(76, 175, 80, 0.1);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    border-radius: 6px;
+    font-size: 0.9rem;
+    color: var(--ifm-color-success-dark);
+}
+
+.nameOnlyForm {
+    margin-top: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(180, 140, 255, 0.2);
+    border-radius: 8px;
+    background: rgba(180, 140, 255, 0.03);
+}
+
+.nameOnlyForm h4 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+}
+
+.formGroup {
+    margin-bottom: 1rem;
+}
+
+.formGroup label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.formGroup input[type='text'],
+.formGroup select {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid rgba(180, 140, 255, 0.3);
+    border-radius: 4px;
+    background: var(--ifm-background-color);
+    color: var(--ifm-font-color-base);
+    font-size: 1rem;
+    font-family: inherit;
+}
+
+.formGroup input[type='text']:focus,
+.formGroup select:focus {
+    outline: none;
+    border-color: var(--ifm-color-primary);
+    box-shadow: 0 0 0 2px rgba(180, 140, 255, 0.1);
+}
+
+.errorMessage {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    background: rgba(244, 67, 54, 0.1);
+    border: 1px solid rgba(244, 67, 54, 0.3);
+    border-radius: 4px;
+    color: var(--ifm-color-danger-dark);
+    font-size: 0.9rem;
+}
+
+.formActions {
+    margin-top: 1.5rem;
+    display: flex;
+    gap: 0.75rem;
+}
