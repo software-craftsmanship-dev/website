@@ -150,6 +150,9 @@ export function SignManifest() {
 
             if (!upsertError && isMounted && upserted) {
                 setSignature(upserted);
+
+                broadcastSignatureChange();
+
                 try {
                     sessionStorage.setItem('signedUserId', user.id);
                 } catch {
