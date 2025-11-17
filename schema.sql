@@ -173,6 +173,24 @@ RETURN v_result;
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
+create or replace function delete_my_account()
+returns void
+language plpgsql
+security definer
+as $$
+begin
+
+  if auth.uid() is null then
+    raise exception 'Not logged in';
+end if;
+
+delete from auth.users where id = auth.uid();
+end;
+$$;
+
+GRANT EXECUTE ON FUNCTION delete_my_account TO authenticated;
+
+
 -- 6. GRANTS
 GRANT USAGE ON SCHEMA public TO postgres, anon, authenticated, service_role;
 

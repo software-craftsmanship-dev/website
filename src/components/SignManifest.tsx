@@ -301,28 +301,26 @@ export function SignManifest() {
 
     const withdrawSignature = async () => {
         if (!supabase || !session?.user) return;
-        setCheckingSignature(true); // UI Feedback
+        setCheckingSignature(true);
 
-        const { error } = await supabase.from('signatures').delete().eq('user_id', session.user.id);
+        const { error } = await supabase.rpc('delete_my_account');
 
         if (error) {
-            console.error('Failed to withdraw signature', error);
+            console.error('Failed to delete account', error);
+            // Optional: User informieren
+            alert('Fehler beim Löschen des Accounts: ' + error.message);
         } else {
-            // Success Cleanup
+
             setSignature(null);
-            try {
-                sessionStorage.removeItem('signedUserId');
-            } catch {
-                // SessionStorage might not be available
-            }
+            try { sessionStorage.removeItem('signedUserId'); } catch {}
             broadcastSignatureChange();
 
-            // Optional: User logout for "Clean Slate"
             try {
                 await supabase.auth.signOut();
             } catch (e) {
-                console.warn('Local sign out cleanup', e);
+
             }
+
             setSession(null);
         }
         setCheckingSignature(false);
