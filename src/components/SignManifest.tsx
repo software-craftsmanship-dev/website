@@ -177,7 +177,7 @@ export function SignManifest() {
         try {
             const origin = window.location.origin; // e.g. http://localhost:3000
             const base = (window as Window & { siteConfigBaseUrl?: string })?.siteConfigBaseUrl || '/';
-            return origin + base;
+            return origin + base + '/signatories';
         } catch {
             return undefined;
         }
