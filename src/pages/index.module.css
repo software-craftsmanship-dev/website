@@ -23,9 +23,8 @@
 }
 
 .manifestContainer {
-    min-height: 100vh;
     display: flex;
-    align-items: center;
+    align-items: normal;
     justify-content: center;
     padding: 3rem 1rem 4rem;
     background: var(--site-bg);
