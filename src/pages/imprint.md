@@ -6,10 +6,7 @@ description: Legal information and responsible party for the AI-Augmented Softwa
 # Imprint
 
 **Responsible for content:**  
-Thorsten Suckow-Homberg<br />
-Kullenhofwinkel 24a<br />
-52074 Aachen<br />
-Germany
+Thorsten Suckow-Homberg
 
 **Contact:**  
 Email: [manifesto@software-craftsmanship.dev](mailto:manifesto@software-craftsmanship.dev)  
