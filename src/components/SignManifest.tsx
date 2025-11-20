@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useSupabase } from '@site/src/utils/supabase';
 import PrivacySettings from './PrivacySettings';
+import ShareButtons from './ShareButtons';
 import styles from './SignManifest.module.css';
 import { Session } from '@supabase/supabase-js';
 
@@ -268,6 +269,8 @@ export function SignManifest() {
                     const { data: newCaptcha } = await supabase.rpc('generate_captcha_challenge');
                     if (newCaptcha) setCaptchaChallenge(newCaptcha);
                     setNameOnlyForm((prev) => ({ ...prev, captchaAnswer: '' }));
+                } else if ((error as any).code === '42501') {
+                    setNameOnlyError('Permission denied (RLS). Please retry in a moment or contact support if this persists.');
                 } else {
                     setNameOnlyError(error.message || 'Failed to submit signature. Please try again.');
                 }
@@ -343,6 +346,16 @@ export function SignManifest() {
         }
     })();
     const showReLoginNotice = !showSignedState && !!signedUserIdLS;
+
+    // For name-only signing (no session) we still want to offer sharing after success
+    const hasNameOnlySignature = (() => {
+        if (nameOnlySuccess) return true;
+        try {
+            return Boolean(sessionStorage.getItem('lastNameOnlySignature'));
+        } catch {
+            return false;
+        }
+    })();
 
     // Compute display name based on privacy level
     let displayName = session?.user?.user_metadata?.full_name || session?.user?.email;
@@ -482,6 +495,15 @@ export function SignManifest() {
                             </div>
                         </div>
                     )}
+
+                    {/* Show ShareButtons after a successful name-only signature (or if sessionStorage indicates prior signing) */}
+                    {hasNameOnlySignature && !showNameOnlyForm && (
+                        <div style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(180, 140, 255, 0.12)' }}>
+                            <h3>You have signed the Manifesto.</h3>
+                            <p>Thank you for your commitment. Together, we define the standard for AI-augmented software craftsmanship.</p>
+                                <ShareButtons />
+                        </div>
+                    )}
                 </>
             ) : (
                 <div className={styles.signedState}>
@@ -508,6 +530,11 @@ export function SignManifest() {
                             currentLevel={signature.privacy_level}
                             onLevelChange={(level) => setSignature({ ...signature, privacy_level: level })}
                         />
+                    )}
+                    {signature && (
+                        <div style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(180, 140, 255, 0.12)' }}>
+                            <ShareButtons />
+                        </div>
                     )}
                 </div>
             )}

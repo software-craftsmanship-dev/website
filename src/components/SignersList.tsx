@@ -47,12 +47,11 @@ export default function SignersList() {
     if (loading) return <div>Loading signers…</div>;
 
 
-    if (signers.length === 0) return <></>;//<div>No signatures yet. Be the first to sign!</div>;
+    if (signers.length === 0) return <></>;
 
     return (
         <>
         <h3 style={{ marginBottom: '0.75rem', color: 'var(--manifest-heading-color)' }}>
-            Recent signers
         </h3>
         <div className="signersList" style={{ marginTop: '1rem' }}>
             <ul

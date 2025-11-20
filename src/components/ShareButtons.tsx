@@ -4,13 +4,22 @@ interface Props {
     url?: string;
     title?: string;
     text?: string;
+    compact?: boolean;
 }
 
 export default function ShareButtons({
-    url = typeof window !== 'undefined' ? window.location.href : '',
+    url = 'https://ai-manifesto.software-craftsmanship.dev',
     title = 'AI-Augmented Software Craftsmanship Manifesto',
     text = 'I just signed the AI-Augmented Software Craftsmanship Manifesto. Join me in promoting responsible AI development practices! #AICraftsmanship #SoftwareDevelopment #ResponsibleAI',
+    compact = false,
 }: Props) {
+
+    if (compact) {
+        text = 'Comprehension over Convenience. Principles for maintaining quality and mastery in the age of AI. #AICraftsmanship #SoftwareDevelopment #Craftsmanship #ResponsibleAI';
+    } else {
+        text = 'I just signed the Manifesto for AI-Augmented Software Craftsmanship. We commit to Verification over Assumption and Ownership over Delegation. #AICraftsmanship #SoftwareDevelopment #Craftsmanship #ResponsibleAI';
+    }
+
     const encodedUrl = encodeURIComponent(url);
     const encodedTitle = encodeURIComponent(title);
     const encodedText = encodeURIComponent(text);
@@ -74,9 +83,14 @@ export default function ShareButtons({
         }
     };
 
+    const buttonSize = compact ? 28 : 40;
+    const fontSize = compact ? '0.9rem' : '1.2rem';
+    const gap = compact ? '0.5rem' : '0.75rem';
+    const labelFontSize = compact ? '0.8rem' : '0.9rem';
+
     return (
-        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', alignItems: 'center' }}>
-            <span style={{ fontSize: '0.9rem', opacity: 0.8 }}>Share:</span>
+        <div style={{ display: 'flex', gap, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
+            <span style={{ fontSize: labelFontSize, opacity: 0.8 }}></span>
             {shareLinks.map((link) => (
                 <button
                     key={link.name}
@@ -86,13 +100,13 @@ export default function ShareButtons({
                         display: 'inline-flex',
                         alignItems: 'center',
                         justifyContent: 'center',
-                        width: '40px',
-                        height: '40px',
+                        width: `${buttonSize}px`,
+                        height: `${buttonSize}px`,
                         borderRadius: '50%',
                         border: `1px solid rgba(180, 140, 255, 0.3)`,
                         background: 'rgba(180, 140, 255, 0.08)',
                         color: 'var(--ifm-color-primary)',
-                        fontSize: '1.2rem',
+                        fontSize,
                         fontWeight: 'bold',
                         cursor: 'pointer',
                         transition: 'all 0.2s ease',
