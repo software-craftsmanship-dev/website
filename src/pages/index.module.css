@@ -126,27 +126,32 @@
     text-decoration: underline;
 }
 
+/* Override: single centered column for manifesto values */
 .manifestValues {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.1rem 1.25rem;
-    margin: 2.25rem 0 1.75rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.1rem;
+    max-width: 400px;
+    margin: 2.25rem auto 1.75rem auto;
+    padding: 0 0.5rem;
 }
 
 @media (max-width: 650px) {
-    .manifestValues { grid-template-columns: 1fr; }
+    .manifestValues {
+        max-width: 100%;
+        padding: 0 0.25rem;
+    }
 }
 
 .manifestValueItem {
     position: relative;
     padding: 0.85rem 1rem 0.9rem;
-    border: 1px solid rgba(180,140,255,0.18);
     border-radius: 14px;
-    background: linear-gradient(135deg, rgba(107,61,245,0.14), rgba(30,20,60,0.55));
-    backdrop-filter: blur(4px);
-    box-shadow: 0 4px 14px -4px rgba(0,0,0,0.5), 0 0 0 1px rgba(140,110,255,0.15) inset;
     transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease;
     overflow: hidden;
+    width: 100%; /* full width within the constrained column */
 }
 
 .manifestValueItem::before {
@@ -170,15 +175,7 @@
     filter: drop-shadow(0 1px 1px rgba(0,0,0,0.4));
 }
 
-.manifestValueItem:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px -6px rgba(0,0,0,0.55), 0 0 0 1px rgba(140,110,255,0.4) inset;
-    border-color: rgba(180,140,255,0.5);
-}
 
-.manifestValueItem:focus-within {
-    outline: 2px solid var(--ifm-color-primary);
-}
 
 /* Intro transition */
 @keyframes manifestValueFadeIn {
