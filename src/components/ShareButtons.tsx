@@ -90,7 +90,7 @@ export default function ShareButtons({
 
     return (
         <div style={{ display: 'flex', gap, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ fontSize: labelFontSize, opacity: 0.8 }}></span>
+            <span style={{ fontSize: labelFontSize, opacity: 0.8 }}>{compact == false ? 'Share:' : ''}</span>
             {shareLinks.map((link) => (
                 <button
                     key={link.name}
