@@ -23,13 +23,13 @@ We, as craftspeople, commit to the enduring principles of quality, responsibilit
 
 We see AI not as a replacement for our skills, but as a powerful tool that, when wielded with discipline and wisdom, augments them. To this end, we commit to the following values:
 
-**Collaboration** over Automation
+**Collaboration** over Automation.
 
-**Comprehension** over Convenience
+**Comprehension** over Convenience.
 
-**Ownership** over Delegation
+**Ownership** over Delegation.
 
-**Verification** over Assumption
+**Verification** over Assumption.
 
 We pursue the values on the left, knowing that favoring those on the right erodes our craft.
 
