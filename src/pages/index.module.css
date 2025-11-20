@@ -126,13 +126,67 @@
     text-decoration: underline;
 }
 
-@media (max-width: 768px) {
-    .manifestCard {
-        padding: 1.75rem 1.25rem;
-        max-width: 92vw;
-    }
-
-    .manifestTitle {
-        font-size: 2rem;
-    }
+.manifestValues {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem 1.25rem;
+    margin: 2.25rem 0 1.75rem;
 }
+
+@media (max-width: 650px) {
+    .manifestValues { grid-template-columns: 1fr; }
+}
+
+.manifestValueItem {
+    position: relative;
+    padding: 0.85rem 1rem 0.9rem;
+    border: 1px solid rgba(180,140,255,0.18);
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(107,61,245,0.14), rgba(30,20,60,0.55));
+    backdrop-filter: blur(4px);
+    box-shadow: 0 4px 14px -4px rgba(0,0,0,0.5), 0 0 0 1px rgba(140,110,255,0.15) inset;
+    transition: box-shadow .25s ease, transform .25s ease, border-color .25s ease;
+    overflow: hidden;
+}
+
+.manifestValueItem::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: radial-gradient(circle at 25% 20%, rgba(255,255,255,0.08), transparent 60%);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.manifestValueItem span {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.3;
+    background: linear-gradient(90deg, #f5f3ff 0%, #d0c4ff 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 1px 1px rgba(0,0,0,0.4));
+}
+
+.manifestValueItem:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px -6px rgba(0,0,0,0.55), 0 0 0 1px rgba(140,110,255,0.4) inset;
+    border-color: rgba(180,140,255,0.5);
+}
+
+.manifestValueItem:focus-within {
+    outline: 2px solid var(--ifm-color-primary);
+}
+
+/* Intro transition */
+@keyframes manifestValueFadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.manifestValueItem { animation: manifestValueFadeIn .6s ease both; }
+.manifestValueItem:nth-child(2) { animation-delay: .1s; }
+.manifestValueItem:nth-child(3) { animation-delay: .2s; }
+.manifestValueItem:nth-child(4) { animation-delay: .3s; }
