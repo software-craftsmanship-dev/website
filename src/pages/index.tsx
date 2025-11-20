@@ -6,9 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import remarkBreaks from 'remark-breaks';
 
-import SignManifest from '@site/src/components/SignManifest';
 import SignersList from '@site/src/components/SignersList';
-import ShareButtons from '@site/src/components/ShareButtons';
 
 import sections from '@site/src/data/readmeSections.json';
 
