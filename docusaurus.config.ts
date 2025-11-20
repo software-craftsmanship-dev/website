@@ -68,24 +68,28 @@ const config: Config = {
           label: 'Preamble',
           position: 'left',
         },
-        {
-          to: '/privacy',
-          label: 'Privacy',
-          position: 'right',
-        },
+          {
+              to: '/principles',
+              label: 'Principles',
+              position: 'left',
+          },
+          {
+              to: '/signatories',
+              label: 'The Signatories',
+              position: 'left',
+          }/*,
         {
           href: 'https://github.com/software-craftsmanship-dev',
           className: 'header-github-link',
           position: 'right',
-        },
+        },*/
       ],
     },
     footer: {
       style: 'dark',
       links: [
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} <i>The Signatories</i>. Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. This statement may be freely copied in any form,
-but only in its entirety through this notice. <a href="/imprint">Imprint</a>.`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="/signatories">The Signatories</a>. Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  (<a href="/privacy">Privacy Policy</a> | <a href="/imprint">Imprint</a> | <a href="https://github.com/software-craftsmanship-dev">Github</a>).`,
     },
     prism: {
       theme: prismThemes.github,
