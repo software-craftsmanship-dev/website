@@ -22,7 +22,7 @@ The manifesto is published under the [CC BY-SA 4.0 license](https://creativecomm
 
 - **Hosting:** GitHub Pages
 - **Database:** Supabase (EU-hosted)
-- **Source code:** Available at [github.com/software-craftsmanship-dev/ai-manifesto](https://github.com/software-craftsmanship-dev/ai-manifesto)
+- **Source code:** Available at [github.com/software-craftsmanship-dev/website](https://github.com/software-craftsmanship-dev/website)
 
 ## Disclaimer
 
