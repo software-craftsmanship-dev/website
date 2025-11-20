@@ -533,6 +533,8 @@ export function SignManifest() {
                     )}
                     {signature && (
                         <div style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(180, 140, 255, 0.12)' }}>
+                            <h3>You have signed the Manifesto.</h3>
+                            <p>Thank you for your commitment. Together, we define the standard for AI-augmented software craftsmanship.</p>
                             <ShareButtons />
                         </div>
                     )}
