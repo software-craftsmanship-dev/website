@@ -77,19 +77,19 @@ const config: Config = {
               to: '/signatories',
               label: 'The Signatories',
               position: 'left',
-          }/*,
+          },
         {
           href: 'https://github.com/software-craftsmanship-dev',
           className: 'header-github-link',
           position: 'right',
-        },*/
+        },
       ],
     },
     footer: {
       style: 'dark',
       links: [
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} <a href="/signatories">The Signatories</a>. Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.  (<a href="/privacy">Privacy Policy</a> | <a href="/imprint">Imprint</a> | <a href="https://github.com/software-craftsmanship-dev">Github</a>).`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="/signatories">The Signatories</a>. Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a><br/><a href="/privacy">Privacy Policy</a> | <a href="/imprint">Imprint</a>`,
     },
     prism: {
       theme: prismThemes.github,
