@@ -38,33 +38,11 @@ export default function Home(): ReactNode {
                         </ReactMarkdown>
                     </article>
 
-                    <div
-                        style={{
-                            marginTop: '2rem',
-                            borderTop: '1px solid rgba(180, 140, 255, 0.12)',
-                            paddingTop: '1.5rem',
-                        }}
-                    >
-                        <SignManifest />
-                    </div>
 
                     <div style={{ marginTop: '1.25rem' }}>
-                        <h3 style={{ marginBottom: '0.75rem', color: 'var(--manifest-heading-color)' }}>
-                            Recent signers
-                        </h3>
                         <SignersList />
                     </div>
 
-                    <div
-                        style={{
-                            textAlign: 'right',
-                            marginTop: '1.5rem',
-                            paddingTop: '1rem',
-                            borderTop: '1px solid rgba(180, 140, 255, 0.12)',
-                        }}
-                    >
-                        <ShareButtons />
-                    </div>
                 </section>
             </main>
         </Layout>
