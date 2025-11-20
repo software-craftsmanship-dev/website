@@ -116,7 +116,7 @@ export function SignManifest() {
                   : null;
 
             const avatarUrl = meta.avatar_url || meta.picture || null;
-            const displayName = meta.full_name || meta.name || meta.user_name || user.email || null;
+            const displayName = meta.full_name || meta.name || meta.user_name || user || null;
 
             const { error } = await supabase.from('signatures').select('*').eq('user_id', user.id).maybeSingle();
 
@@ -358,7 +358,7 @@ export function SignManifest() {
     })();
 
     // Compute display name based on privacy level
-    let displayName = session?.user?.user_metadata?.full_name || session?.user?.email;
+    let displayName = session?.user?.user_metadata?.full_name;
     if (signature) {
         if (signature.privacy_level === 'anonymous') {
             displayName = 'Anonymous Supporter';
