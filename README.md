@@ -1,3 +1,5 @@
+[![software craftsmanship - value driven · ai-augmented](https://img.shields.io/badge/software%20craft-value--driven%20%C2%B7%20ai--augmented-4c1d95?style=flat-square&labelColor=111827)](https://ai-manifesto.software-craftsmanship.dev)
+
 # The Manifesto for AI-Augmented Software Craftsmanship
 
 ## Preamble
