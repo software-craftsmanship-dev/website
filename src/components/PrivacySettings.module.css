@@ -1,0 +1,33 @@
+/**
+ * PrivacySettings Component Styles
+ * Provides UI for users to control their signature privacy level
+ */
+
+.container {
+    margin-top: 1rem;
+    padding: 1rem;
+    border: 1px solid rgba(180, 140, 255, 0.12);
+    border-radius: 8px;
+}
+
+.heading {
+    margin: 0 0 0.75rem 0;
+}
+
+.optionsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.optionLabel {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.saveButton {
+    margin-top: 1rem;
+}
+

@@ -78,7 +78,7 @@ export default function Home(): ReactNode {
                             {parts.values.map((v) => (
                                 <div key={v.left} className={styles.manifestValueItem}>
                                     <span>
-                                        {v.left} <small style={{ fontWeight: 400 }}>over</small> {v.right}
+                                        {v.left} <small className={styles.overText}>over</small> {v.right}
                                     </span>
                                 </div>
                             ))}
@@ -94,7 +94,7 @@ export default function Home(): ReactNode {
                         </article>
                     )}
 
-                    <div style={{ marginTop: '1.25rem' }}>
+                    <div className={styles.signersSection}>
                         <SignersList />
                     </div>
 

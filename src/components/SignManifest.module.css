@@ -114,3 +114,19 @@
     display: flex;
     gap: 0.75rem;
 }
+
+.shareSection {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(180, 140, 255, 0.12);
+}
+
+.shareSection h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+.nameOnlyButton {
+    color: #fff;
+    background: none;
+}

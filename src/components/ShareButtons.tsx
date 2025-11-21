@@ -1,28 +1,32 @@
 import React from 'react';
+import styles from './ShareButtons.module.css';
 
 interface Props {
     url?: string;
     title?: string;
-    text?: string;
     compact?: boolean;
+}
+
+interface ShareLink {
+    name: string;
+    icon: string;
+    url: string;
+    color: string;
 }
 
 export default function ShareButtons({
     url = 'https://ai-manifesto.software-craftsmanship.dev',
     title = 'AI-Augmented Software Craftsmanship Manifesto',
-    text = 'I just signed the AI-Augmented Software Craftsmanship Manifesto. Join me in promoting responsible AI development practices! #AICraftsmanship #SoftwareDevelopment #ResponsibleAI',
     compact = false,
 }: Props) {
-
-    if (compact) {
-        text = 'Comprehension over Convenience. Principles for maintaining quality and mastery in the age of AI. #AICraftsmanship #SoftwareDevelopment #Craftsmanship #ResponsibleAI';
-    } else {
-        text = 'I just signed the Manifesto for AI-Augmented Software Craftsmanship. We commit to Verification over Assumption and Ownership over Delegation. #AICraftsmanship #SoftwareDevelopment #Craftsmanship #ResponsibleAI';
-    }
+    // Adjust share text based on compact mode
+    const shareText = compact
+        ? 'Comprehension over Convenience. Principles for maintaining quality and mastery in the age of AI. #AICraftsmanship #SoftwareDevelopment #Craftsmanship #ResponsibleAI'
+        : 'I just signed the Manifesto for AI-Augmented Software Craftsmanship. We commit to Verification over Assumption and Ownership over Delegation. #AICraftsmanship #SoftwareDevelopment #Craftsmanship #ResponsibleAI';
 
     const encodedUrl = encodeURIComponent(url);
     const encodedTitle = encodeURIComponent(title);
-    const encodedText = encodeURIComponent(text);
+    const encodedText = encodeURIComponent(shareText);
 
     const shareLinks = [
         {
@@ -75,7 +79,7 @@ export default function ShareButtons({
         },
     ];
 
-    const handleShare = async (link: (typeof shareLinks)[0]) => {
+    const handleShare = async (link: ShareLink) => {
         if (link.name === 'Email') {
             window.location.href = link.url;
         } else {
@@ -83,44 +87,19 @@ export default function ShareButtons({
         }
     };
 
-    const buttonSize = compact ? 28 : 40;
-    const fontSize = compact ? '0.9rem' : '1.2rem';
-    const gap = compact ? '0.5rem' : '0.75rem';
-    const labelFontSize = compact ? '0.8rem' : '0.9rem';
+    const containerClass = compact ? `${styles.container} ${styles.containerCompact}` : styles.container;
+    const labelClass = compact ? styles.labelCompact : styles.label;
+    const buttonClass = compact ? `${styles.shareButton} ${styles.shareButtonCompact}` : styles.shareButton;
 
     return (
-        <div style={{ display: 'flex', gap, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'center' }}>
-            <span style={{ fontSize: labelFontSize, opacity: 0.8 }}>{compact == false ? 'Share:' : ''}</span>
+        <div className={containerClass}>
+            {!compact && <span className={labelClass}>Share:</span>}
             {shareLinks.map((link) => (
                 <button
                     key={link.name}
                     onClick={() => handleShare(link)}
                     title={`Share on ${link.name}`}
-                    style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        width: `${buttonSize}px`,
-                        height: `${buttonSize}px`,
-                        borderRadius: '50%',
-                        border: `1px solid rgba(180, 140, 255, 0.3)`,
-                        background: 'rgba(180, 140, 255, 0.08)',
-                        color: 'var(--ifm-color-primary)',
-                        fontSize,
-                        fontWeight: 'bold',
-                        cursor: 'pointer',
-                        transition: 'all 0.2s ease',
-                    }}
-                    onMouseEnter={(e) => {
-                        e.currentTarget.style.background = 'rgba(180, 140, 255, 0.2)';
-                        e.currentTarget.style.borderColor = 'var(--ifm-color-primary)';
-                        e.currentTarget.style.transform = 'translateY(-2px)';
-                    }}
-                    onMouseLeave={(e) => {
-                        e.currentTarget.style.background = 'rgba(180, 140, 255, 0.08)';
-                        e.currentTarget.style.borderColor = 'rgba(180, 140, 255, 0.3)';
-                        e.currentTarget.style.transform = 'translateY(0)';
-                    }}
+                    className={buttonClass}
                 >
                     {link.icon}
                 </button>

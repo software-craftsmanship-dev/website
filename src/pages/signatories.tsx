@@ -3,27 +3,25 @@ import Layout from '@theme/Layout';
 import Heading from '@theme/Heading';
 import SignManifest from '@site/src/components/SignManifest';
 import SignersList from '@site/src/components/SignersList';
-import styles from './index.module.css';
+import styles from './signatories.module.css';
 
 export default function SignatoriesPage() {
     return (
         <Layout title="Signatories" description="People who signed the manifesto">
-            <main className={styles.manifestContainer}>
-                <section className={styles.manifestCard}>
-                    <header className={styles.manifestHeader}>
-                        <Heading as="h1" className={styles.manifestTitle}>
-                            <span className={styles.coreSubject}>The Signatories</span>
-                        </Heading>
-                    </header>
+            <main className={styles.signatoriesContainer}>
+                <header className={styles.signatoriesHeader}>
+                    <Heading as="h1" className={styles.signatoriesTitle}>
+                        <span className={styles.coreSubject}>The Signatories</span>
+                    </Heading>
+                </header>
 
-                    <div style={{ marginTop: '1rem' }}>
-                        <SignManifest />
-                    </div>
+                <div className={styles.signatureSection}>
+                    <SignManifest />
+                </div>
 
-                    <div style={{ marginTop: '1.5rem' }}>
-                        <SignersList />
-                    </div>
-                </section>
+                <div className={styles.signersSection}>
+                    <SignersList variant="full" />
+                </div>
             </main>
         </Layout>
     );

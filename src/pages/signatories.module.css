@@ -1,0 +1,82 @@
+/**
+ * Signatories Page Styles
+ * Full-width layout for displaying all signatories
+ */
+
+.signatoriesContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 3rem 1rem 4rem;
+    background: var(--site-bg);
+    min-height: 60vh;
+    width: 100%;
+}
+
+.signatoriesHeader {
+    max-width: 760px;
+    width: 100%;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(180, 140, 255, 0.12);
+    padding-bottom: 1rem;
+}
+
+.signatoriesTitle {
+    text-align: center;
+    line-height: 1.2;
+}
+
+.coreSubject {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.signatureSection {
+    max-width: 760px;
+    width: 100%;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: rgba(180, 140, 255, 0.02);
+    border: 1px solid rgba(180, 140, 255, 0.12);
+    border-radius: 12px;
+}
+
+.signersSection {
+    width: 100%;
+    padding: 0 3rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 996px) {
+    .signatoriesContainer {
+        padding: 2rem 1rem 3rem;
+    }
+
+    .coreSubject {
+        font-size: 2rem;
+    }
+
+    .signatureSection {
+        padding: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .signatoriesContainer {
+        padding: 1.5rem 0.75rem 2.5rem;
+    }
+
+    .coreSubject {
+        font-size: 1.75rem;
+    }
+
+    .signatureSection {
+        padding: 1rem;
+    }
+
+    .signersSection {
+        padding: 0 0.5rem;
+    }
+}
+

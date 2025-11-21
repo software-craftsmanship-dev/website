@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSupabase } from '@site/src/utils/supabase';
+import styles from './PrivacySettings.module.css';
 
 type PrivacyLevel = 'full' | 'firstname' | 'anonymous';
 
@@ -29,63 +30,55 @@ export default function PrivacySettings({ userId, currentLevel, onLevelChange }:
     const handleSave = async () => {
         if (!supabase) return;
         setSaving(true);
-        const { error } = await supabase.from('signatures').update({ privacy_level: level }).eq('user_id', userId); // Check user_id instead of id
+        const { error } = await supabase.from('signatures').update({ privacy_level: level }).eq('user_id', userId);
         if (error) {
             console.error('Failed to update privacy level', error);
         } else {
             onLevelChange(level);
-            broadcastSignatureChange(); // Notify other components
+            broadcastSignatureChange();
         }
         setSaving(false);
     };
 
     return (
-        <div
-            style={{
-                marginTop: '1rem',
-                padding: '1rem',
-                border: '1px solid rgba(180, 140, 255, 0.12)',
-                borderRadius: '8px',
-            }}
-        >
-            <h4 style={{ margin: '0 0 0.75rem 0' }}>Privacy Setting</h4>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <label>
+        <div className={styles.container}>
+            <h4 className={styles.heading}>Privacy Setting</h4>
+            <div className={styles.optionsContainer}>
+                <label className={styles.optionLabel}>
                     <input
                         type="radio"
                         name="privacy"
                         value="full"
                         checked={level === 'full'}
                         onChange={() => setLevel('full')}
-                    />{' '}
+                    />
                     Full Profile (Name & Link)
                 </label>
-                <label>
+                <label className={styles.optionLabel}>
                     <input
                         type="radio"
                         name="privacy"
                         value="firstname"
                         checked={level === 'firstname'}
                         onChange={() => setLevel('firstname')}
-                    />{' '}
+                    />
                     First Name Only
                 </label>
-                <label>
+                <label className={styles.optionLabel}>
                     <input
                         type="radio"
                         name="privacy"
                         value="anonymous"
                         checked={level === 'anonymous'}
                         onChange={() => setLevel('anonymous')}
-                    />{' '}
+                    />
                     Anonymous
                 </label>
             </div>
             <button
-                className="button button--primary"
+                className={`button button--primary ${styles.saveButton}`}
                 onClick={handleSave}
                 disabled={saving || level === currentLevel}
-                style={{ marginTop: '1rem' }}
             >
                 {saving ? 'Saving...' : 'Save Setting'}
             </button>

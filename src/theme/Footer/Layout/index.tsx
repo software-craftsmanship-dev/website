@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import {ThemeClassNames} from '@docusaurus/theme-common';
 import type {Props} from '@theme/Footer/Layout';
 import ShareButtons from '@site/src/components/ShareButtons';
+import styles from './FooterLayout.module.css';
 
 export default function FooterLayout({
   style,
@@ -17,7 +18,7 @@ export default function FooterLayout({
       })}>
       <div className="container container-fluid">
         {links}
-        <div style={{display: 'flex', justifyContent: 'center', marginTop: '1rem', marginBottom: '1rem'}}>
+        <div className={styles.shareButtonsContainer}>
           <ShareButtons compact={true} />
         </div>
         {(logo || copyright) && (

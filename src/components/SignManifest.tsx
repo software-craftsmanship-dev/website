@@ -386,8 +386,7 @@ export function SignManifest() {
                             Sign with LinkedIn
                         </button>
                         <button
-                            className="button button--secondary"
-                            style={{ color: '#fff', background: 'none' }}
+                            className={`button button--secondary ${styles.nameOnlyButton}`}
                             onClick={() => setShowNameOnlyForm(!showNameOnlyForm)}
                         >
                             {showNameOnlyForm ? 'Cancel' : 'Sign with name only'}
@@ -531,7 +530,7 @@ export function SignManifest() {
                         />
                     )}
                     {signature && (
-                        <div style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(180, 140, 255, 0.12)' }}>
+                        <div className={styles.shareSection}>
                             <h3>You have signed the Manifesto.</h3>
                             <ShareButtons />
                         </div>

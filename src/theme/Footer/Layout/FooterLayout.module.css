@@ -1,0 +1,12 @@
+/**
+ * Footer Layout Styles
+ * Custom styles for footer components
+ */
+
+.shareButtonsContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
