@@ -1,0 +1,203 @@
+[
+    {
+        "id": "mock-1",
+        "name": "Alexander Schmidt",
+        "avatar_url": "https://avatars.githubusercontent.com/u/1?v=4",
+        "profile_url": "https://github.com/example1",
+        "created_at": "2024-01-15T10:30:00Z",
+        "privacy_level": "full",
+        "auth_provider": "github",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-2",
+        "name": "Sarah Johnson-Williams",
+        "avatar_url": "https://avatars.githubusercontent.com/u/2?v=4",
+        "profile_url": "https://linkedin.com/in/example2",
+        "created_at": "2024-01-16T14:20:00Z",
+        "privacy_level": "full",
+        "auth_provider": "linkedin",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-3",
+        "name": "Michael Chen",
+        "avatar_url": "https://avatars.githubusercontent.com/u/3?v=4",
+        "profile_url": null,
+        "created_at": "2024-01-17T09:15:00Z",
+        "privacy_level": "firstname",
+        "auth_provider": "github",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-4",
+        "name": "Anonymous Supporter",
+        "avatar_url": null,
+        "profile_url": null,
+        "created_at": "2024-01-18T16:45:00Z",
+        "privacy_level": "anonymous",
+        "auth_provider": "name_only",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-5",
+        "name": "Dr. Emma Thompson-Rodriguez",
+        "avatar_url": "https://avatars.githubusercontent.com/u/5?v=4",
+        "profile_url": "https://github.com/example5",
+        "created_at": "2024-01-19T11:30:00Z",
+        "privacy_level": "full",
+        "auth_provider": "github",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-6",
+        "name": "Hans Müller",
+        "avatar_url": null,
+        "profile_url": null,
+        "created_at": "2024-01-20T08:00:00Z",
+        "privacy_level": "full",
+        "auth_provider": "name_only",
+        "name_only_location": "Berlin, Germany"
+    },
+    {
+        "id": "mock-7",
+        "name": "Jennifer Lee Anderson",
+        "avatar_url": "https://avatars.githubusercontent.com/u/7?v=4",
+        "profile_url": "https://linkedin.com/in/example7",
+        "created_at": "2024-01-21T13:25:00Z",
+        "privacy_level": "full",
+        "auth_provider": "linkedin",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-8",
+        "name": "Robert",
+        "avatar_url": "https://avatars.githubusercontent.com/u/8?v=4",
+        "profile_url": null,
+        "created_at": "2024-01-22T15:10:00Z",
+        "privacy_level": "firstname",
+        "auth_provider": "github",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-9",
+        "name": "Maria Garcia Martinez",
+        "avatar_url": "https://avatars.githubusercontent.com/u/9?v=4",
+        "profile_url": "https://github.com/example9",
+        "created_at": "2024-01-23T10:55:00Z",
+        "privacy_level": "full",
+        "auth_provider": "github",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-10",
+        "name": "David Kim",
+        "avatar_url": null,
+        "profile_url": null,
+        "created_at": "2024-01-24T12:40:00Z",
+        "privacy_level": "full",
+        "auth_provider": "name_only",
+        "name_only_location": "Seoul, South Korea"
+    },
+    {
+        "id": "mock-11",
+        "name": "Anonymous Supporter",
+        "avatar_url": null,
+        "profile_url": null,
+        "created_at": "2024-01-25T09:20:00Z",
+        "privacy_level": "anonymous",
+        "auth_provider": "name_only",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-12",
+        "name": "Elizabeth Victoria Smith-Jones",
+        "avatar_url": "https://avatars.githubusercontent.com/u/12?v=4",
+        "profile_url": "https://linkedin.com/in/example12",
+        "created_at": "2024-01-26T14:15:00Z",
+        "privacy_level": "full",
+        "auth_provider": "linkedin",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-13",
+        "name": "Thomas",
+        "avatar_url": "https://avatars.githubusercontent.com/u/13?v=4",
+        "profile_url": null,
+        "created_at": "2024-01-27T11:05:00Z",
+        "privacy_level": "firstname",
+        "auth_provider": "github",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-14",
+        "name": "Priya Patel-Sharma",
+        "avatar_url": "https://avatars.githubusercontent.com/u/14?v=4",
+        "profile_url": "https://github.com/example14",
+        "created_at": "2024-01-28T16:30:00Z",
+        "privacy_level": "full",
+        "auth_provider": "github",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-15",
+        "name": "Carlos Rodriguez",
+        "avatar_url": null,
+        "profile_url": null,
+        "created_at": "2024-01-29T10:45:00Z",
+        "privacy_level": "full",
+        "auth_provider": "name_only",
+        "name_only_location": "Madrid, Spain"
+    },
+    {
+        "id": "mock-16",
+        "name": "Sophie",
+        "avatar_url": "https://avatars.githubusercontent.com/u/16?v=4",
+        "profile_url": null,
+        "created_at": "2024-01-30T13:50:00Z",
+        "privacy_level": "firstname",
+        "auth_provider": "linkedin",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-17",
+        "name": "Ahmed Hassan Al-Rashid",
+        "avatar_url": "https://avatars.githubusercontent.com/u/17?v=4",
+        "profile_url": "https://github.com/example17",
+        "created_at": "2024-01-31T09:35:00Z",
+        "privacy_level": "full",
+        "auth_provider": "github",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-18",
+        "name": "Anonymous Supporter",
+        "avatar_url": null,
+        "profile_url": null,
+        "created_at": "2024-02-01T15:20:00Z",
+        "privacy_level": "anonymous",
+        "auth_provider": "name_only",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-19",
+        "name": "Yuki Tanaka-Watanabe",
+        "avatar_url": "https://avatars.githubusercontent.com/u/19?v=4",
+        "profile_url": "https://linkedin.com/in/example19",
+        "created_at": "2024-02-02T11:10:00Z",
+        "privacy_level": "full",
+        "auth_provider": "linkedin",
+        "name_only_location": null
+    },
+    {
+        "id": "mock-20",
+        "name": "Isabella Rossi",
+        "avatar_url": null,
+        "profile_url": null,
+        "created_at": "2024-02-03T14:25:00Z",
+        "privacy_level": "full",
+        "auth_provider": "name_only",
+        "name_only_location": "Rome, Italy"
+    }
+]
+

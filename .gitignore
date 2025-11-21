@@ -22,4 +22,4 @@ yarn-error.log*
 /.idea/
 /src/data/readmeSections.json
 /.vscode/
-/src/data/mockSignatures.json
+
