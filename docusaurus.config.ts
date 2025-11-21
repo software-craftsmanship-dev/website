@@ -9,7 +9,7 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'AI-Augmented Software Craftsmanship',
+  title: 'Manifesto for AI-Augmented Software Craftsmanship',
   tagline: 'Principles for AI-Augmented Software Craftsmanship. A guide for using AI as a partner, not a replacement.',
   favicon: 'img/favicon.ico',
 
