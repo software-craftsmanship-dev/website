@@ -17,51 +17,51 @@
     padding: 0;
     margin: 0;
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
     gap: 12px;
-    max-width: 760px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
 }
 
 /* Full variant for signatories page - more columns, fixed width */
 .gridFull {
-    grid-template-columns: repeat(auto-fill, minmax(200px, 200px));
+    grid-template-columns: repeat(auto-fit, minmax(200px, 200px));
     gap: 16px;
     justify-content: start;
     max-width: none;
 }
 
 /* Responsive grid adjustments */
-@media (min-width: 1200px) {
+@media (max-width: 1200px) {
     .grid {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
         gap: 14px;
     }
 
     .gridFull {
-        grid-template-columns: repeat(auto-fill, minmax(220px, 220px));
-        gap: 18px;
-    }
-}
-
-@media (min-width: 1600px) {
-    .gridFull {
-        grid-template-columns: repeat(auto-fill, minmax(240px, 240px));
-        gap: 20px;
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 16px;
     }
 }
 
 @media (max-width: 768px) {
     .grid {
-        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 12px;
+    }
+}
+
+@media (max-width: 520px) {
+    .grid {
+        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
         gap: 10px;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 420px) {
     .grid {
-        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
         gap: 8px;
     }
 }
@@ -144,4 +144,23 @@
     text-overflow: ellipsis;
 }
 
+@media (max-width: 520px) {
+    .signerCard {
+        padding: 6px 8px;
+        gap: 6px;
+        font-size: 0.75rem;
+    }
 
+    .signerInfo {
+        gap: 1px;
+    }
+
+    .nameLink,
+    .nameText {
+        font-size: 0.75rem;
+    }
+
+    .location {
+        font-size: 0.7rem;
+    }
+}

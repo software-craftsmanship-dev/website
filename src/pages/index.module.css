@@ -13,7 +13,7 @@
 
 .manifestCard {
     max-width: 760px;
-    width: 100%;
+    width: min(760px, 100%);
     background: transparent;
     border-radius: 20px;
     padding: 2.5rem 2rem;
@@ -104,7 +104,7 @@
     align-items: center;
     justify-content: flex-start;
     gap: 1.1rem;
-    max-width: 400px;
+    max-width: min(420px, 90vw);
     margin: 2.25rem auto 1.75rem auto;
     padding: 0 0.5rem;
 }
@@ -113,6 +113,50 @@
     .manifestValues {
         max-width: 100%;
         padding: 0 0.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .manifestContainer {
+        padding: 2.25rem 0.75rem 3rem;
+    }
+
+    .manifestCard {
+        padding: 2rem 1rem;
+    }
+
+    .manifestHeader {
+        padding-bottom: 0.75rem;
+        margin-bottom: 1rem;
+    }
+
+    .coreSubject {
+        font-size: 2.4rem;
+    }
+
+    .manifestContent {
+        margin-top: 1rem;
+    }
+}
+
+@media (max-width: 520px) {
+    .coreSubject {
+        font-size: 2rem;
+    }
+
+    .manifestValues {
+        gap: 0.9rem;
+    }
+
+    .manifestValueItem {
+        padding: 0.75rem 0.85rem 0.8rem;
+    }
+}
+
+@media (max-width: 420px) {
+    .manifestContent p,
+    .manifestContent li {
+        font-size: 0.95rem;
     }
 }
 
@@ -163,5 +207,3 @@
 .overText {
     font-weight: 400;
 }
-
-
