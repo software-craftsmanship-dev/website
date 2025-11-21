@@ -21,7 +21,10 @@ function splitManifest(manifestMarkdown?: string) {
     let start = -1;
     let end = -1;
     for (let i = 0; i < lines.length; i++) {
-        if (isValue(lines[i])) { start = i; break; }
+        if (isValue(lines[i])) {
+            start = i;
+            break;
+        }
     }
     if (start === -1) {
         return { before: manifestMarkdown, values: [], after: '' };
@@ -56,18 +59,14 @@ export default function Home(): ReactNode {
                     <header className={styles.manifestHeader}>
                         <Heading as="h1" className={styles.manifestTitle}>
                             <span className={styles.preamble}>Manifesto for</span>
-                            <span className={styles.coreSubject}>
-                                AI-Augmented Software Craftsmanship
-                            </span>
+                            <span className={styles.coreSubject}>AI-Augmented Software Craftsmanship</span>
                         </Heading>
                     </header>
 
                     {/* Intro text before values (from README) */}
                     {parts.before && (
                         <article className={styles.manifestContent}>
-                            <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
-                                {parts.before}
-                            </ReactMarkdown>
+                            <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>{parts.before}</ReactMarkdown>
                         </article>
                     )}
 
@@ -87,9 +86,7 @@ export default function Home(): ReactNode {
                     {/* Text after the values (e.g., "We pursue the values on the left…") */}
                     {parts.after && (
                         <article className={styles.manifestContent}>
-                            <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>
-                                {parts.after}
-                            </ReactMarkdown>
+                            <ReactMarkdown remarkPlugins={[remarkGfm, remarkBreaks]}>{parts.after}</ReactMarkdown>
                         </article>
                     )}
 

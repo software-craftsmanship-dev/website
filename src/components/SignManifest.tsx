@@ -270,7 +270,9 @@ export function SignManifest() {
                     if (newCaptcha) setCaptchaChallenge(newCaptcha);
                     setNameOnlyForm((prev) => ({ ...prev, captchaAnswer: '' }));
                 } else if ((error as any).code === '42501') {
-                    setNameOnlyError('Permission denied (RLS). Please retry in a moment or contact support if this persists.');
+                    setNameOnlyError(
+                        'Permission denied (RLS). Please retry in a moment or contact support if this persists.'
+                    );
                 } else {
                     setNameOnlyError(error.message || 'Failed to submit signature. Please try again.');
                 }
@@ -316,16 +318,15 @@ export function SignManifest() {
             // Optional: User informieren
             alert('Fehler beim Löschen des Accounts: ' + error.message);
         } else {
-
             setSignature(null);
-            try { sessionStorage.removeItem('signedUserId'); } catch {}
+            try {
+                sessionStorage.removeItem('signedUserId');
+            } catch {}
             broadcastSignatureChange();
 
             try {
                 await supabase.auth.signOut();
-            } catch (e) {
-
-            }
+            } catch (e) {}
 
             setSession(null);
         }

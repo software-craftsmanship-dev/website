@@ -5,18 +5,15 @@ import remarkGfm from 'remark-gfm';
 import remarkBreaks from 'remark-breaks';
 import sections from '@site/src/data/readmeSections.json';
 import styles from './preamble.module.css';
-import Heading from "@theme/Heading";
+import Heading from '@theme/Heading';
 
 export default function PrinciplesPage() {
     return (
         <Layout title="Principles" description="Principles of the AI-Augmented Software Craftsmanship Manifesto">
             <main className={styles.preambleWrapper}>
-
                 <header className={styles.preambleHeader}>
                     <Heading as="h1" className={styles.preambleTitle}>
-                        <span className={styles.coreSubject}>
-                            Principles
-                        </span>
+                        <span className={styles.coreSubject}>Principles</span>
                     </Heading>
                 </header>
 
@@ -29,4 +26,3 @@ export default function PrinciplesPage() {
         </Layout>
     );
 }
-

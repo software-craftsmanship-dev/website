@@ -108,17 +108,12 @@ export default function SignersList({ variant = 'compact' }: SignersListProps) {
                             tooltipParts.push(`Location: ${locationInfo}`);
                         }
 
-
                         tooltipParts.push(`Signed: ${new Date(s.created_at).toLocaleDateString()}`);
 
                         const tooltipText = tooltipParts.join('\n');
 
                         return (
-                            <li
-                                key={s.id}
-                                className={styles.signerCard}
-                                title={tooltipText}
-                            >
+                            <li key={s.id} className={styles.signerCard} title={tooltipText}>
                                 {avatarUrl ? (
                                     <img
                                         src={avatarUrl}

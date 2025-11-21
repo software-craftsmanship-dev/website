@@ -93,7 +93,8 @@ export default function ShareButtons({
     const labelClass = compact ? styles.labelCompact : styles.label;
     const buttonClass = compact ? `${styles.shareButton} ${styles.shareButtonCompact}` : styles.shareButton;
 
-    const badgeMarkdown = '[![software craftsmanship - value driven · ai-augmented](https://img.shields.io/badge/software%20craft-value--driven%20%C2%B7%20ai--augmented-4c1d95?style=flat-square&labelColor=111827)](https://ai-manifesto.software-craftsmanship.dev)';
+    const badgeMarkdown =
+        '[![software craftsmanship - value driven · ai-augmented](https://img.shields.io/badge/software%20craft-value--driven%20%C2%B7%20ai--augmented-4c1d95?style=flat-square&labelColor=111827)](https://ai-manifesto.software-craftsmanship.dev)';
     const [copied, setCopied] = React.useState(false);
 
     const copyToClipboard = async () => {
@@ -126,11 +127,7 @@ export default function ShareButtons({
                         <label className={styles.markdownLabel}>Embed on your page:</label>
                         <div className={styles.markdownCodeWrapper}>
                             <code className={styles.markdownCode}>{badgeMarkdown}</code>
-                            <button
-                                onClick={copyToClipboard}
-                                className={styles.copyButton}
-                                title="Copy to clipboard"
-                            >
+                            <button onClick={copyToClipboard} className={styles.copyButton} title="Copy to clipboard">
                                 {copied ? '✓' : '📋'}
                             </button>
                         </div>
