@@ -89,7 +89,7 @@ const config: Config = {
       style: 'dark',
       links: [
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} <a href="/signatories">The Signatories</a>. Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a><br/><a href="/privacy">Privacy Policy</a> | <a href="/imprint">Imprint</a>`,
+      copyright: `Copyright © ${new Date().getFullYear()} <a href="/signatories">The Signatories</a>. Licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a><br/><a href="/privacy">Privacy Policy</a> | <a href="/imprint">Imprint</a> | <a href="/imprint#ai-disclaimer">AI Disclaimer</a>`,
     },
     prism: {
       theme: prismThemes.github,
