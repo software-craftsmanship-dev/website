@@ -1,4 +1,4 @@
-# The Manifesto for AI-Augmented Software Craftsmanship v1.0.0
+# The Manifesto for AI-Augmented Software Craftsmanship
 
 ## Preamble
 
