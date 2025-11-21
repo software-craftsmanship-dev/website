@@ -90,6 +90,13 @@ export default function Home(): ReactNode {
                         </article>
                     )}
 
+                    {/* Sign the Manifesto Button */}
+                    <div className={styles.signButtonContainer}>
+                        <a href="/signatories" className={styles.signButton}>
+                            Sign the Manifesto
+                        </a>
+                    </div>
+
                     <SignersList />
                 </section>
             </main>

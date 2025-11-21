@@ -151,6 +151,20 @@
     .manifestValueItem {
         padding: 0.75rem 0.85rem 0.8rem;
     }
+
+    .signButton {
+        font-size: 1rem;
+        padding: 0.85rem 1.5rem;
+        gap: 0.6rem;
+    }
+
+    .signButtonIcon {
+        font-size: 1.1rem;
+    }
+
+    .signButtonContainer {
+        margin: 2.5rem auto 2rem -11rem;
+    }
 }
 
 @media (max-width: 420px) {
@@ -206,4 +220,51 @@
 /* Style for "over" text in values */
 .overText {
     font-weight: 400;
+}
+
+/* Sign the Manifesto Button */
+.signButtonContainer {
+    display: flex;
+    justify-content: center;
+    margin: 2.5rem 2rem;
+    padding: 0 1rem;
+}
+
+.signButton {
+    display: inline-flex;
+    justify-content:center;
+    align-items: center;
+    padding: 0.6rem 1.25rem;
+    min-width:min(370px, 90vw);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: rgba(180, 140, 255, 0.9);
+    background: transparent;
+    border: 1px solid rgba(180, 140, 255, 0.25);
+    border-radius: 20px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.signButton:hover {
+    color: rgba(180, 140, 255, 1);
+    background: rgba(180, 140, 255, 0.08);
+    border-color: rgba(180, 140, 255, 0.4);
+    text-decoration: none;
+}
+
+.signButton:active {
+    background: rgba(180, 140, 255, 0.12);
+}
+
+@media (max-width: 520px) {
+    .signButton {
+        font-size: 0.9rem;
+        padding: 0.55rem 1.1rem;
+    }
+
+    .signButtonContainer {
+        margin: 2rem auto 1.75rem;
+    }
 }
