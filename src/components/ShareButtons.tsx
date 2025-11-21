@@ -83,7 +83,9 @@ export default function ShareButtons({
 
     const handleShare = async (link: ShareLink) => {
         if (link.name === 'Email') {
-            window.location.href = link.url;
+            if (typeof window !== 'undefined') {
+                window.open(link.url, '_self');
+            }
         } else {
             window.open(link.url, '_blank', 'width=600,height=400,noopener,noreferrer');
         }

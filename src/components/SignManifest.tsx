@@ -269,7 +269,7 @@ export function SignManifest() {
                     const { data: newCaptcha } = await supabase.rpc('generate_captcha_challenge');
                     if (newCaptcha) setCaptchaChallenge(newCaptcha);
                     setNameOnlyForm((prev) => ({ ...prev, captchaAnswer: '' }));
-                } else if ((error as any).code === '42501') {
+                } else if ((error as { code?: string }).code === '42501') {
                     setNameOnlyError(
                         'Permission denied (RLS). Please retry in a moment or contact support if this persists.'
                     );
@@ -315,18 +315,24 @@ export function SignManifest() {
 
         if (error) {
             console.error('Failed to delete account', error);
-            // Optional: User informieren
-            alert('Fehler beim Löschen des Accounts: ' + error.message);
+            // Show error to user
+            if (typeof window !== 'undefined') {
+                window.alert('Error deleting account: ' + error.message);
+            }
         } else {
             setSignature(null);
             try {
                 sessionStorage.removeItem('signedUserId');
-            } catch {}
+            } catch {
+                // SessionStorage not available
+            }
             broadcastSignatureChange();
 
             try {
                 await supabase.auth.signOut();
-            } catch (e) {}
+            } catch {
+                // Sign out failed, ignore
+            }
 
             setSession(null);
         }

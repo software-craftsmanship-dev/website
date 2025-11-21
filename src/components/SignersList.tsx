@@ -26,24 +26,21 @@ interface SignersListProps {
 
 export default function SignersList({ variant = 'compact' }: SignersListProps) {
     const supabase = useSupabase();
-    const [signers, setSigners] = useState<Signer[]>([]);
-    const [loading, setLoading] = useState(true);
+    const [signers, setSigners] = useState<Signer[]>(() => (USE_MOCK_DATA ? (mockSignatures as Signer[]) : []));
+    const [loading, setLoading] = useState(() => !USE_MOCK_DATA && !!supabase);
 
     useEffect(() => {
-        // Always use mock data if enabled
         if (USE_MOCK_DATA) {
             console.log('Loading mock signatures:', mockSignatures.length, 'entries');
-            setSigners(mockSignatures as Signer[]);
-            setLoading(false);
             return;
         }
 
         if (!supabase) {
-            setLoading(false);
             return;
         }
 
         const load = async () => {
+            setLoading(true);
             const { data, error } = await supabase
                 .from('signatures')
                 .select(
