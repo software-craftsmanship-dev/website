@@ -5,6 +5,7 @@ interface Props {
     url?: string;
     title?: string;
     compact?: boolean;
+    showBadge?: boolean;
 }
 
 interface ShareLink {
@@ -18,6 +19,7 @@ export default function ShareButtons({
     url = 'https://ai-manifesto.software-craftsmanship.dev',
     title = 'AI-Augmented Software Craftsmanship Manifesto',
     compact = false,
+    showBadge = false,
 }: Props) {
     // Adjust share text based on compact mode
     const shareText = compact
@@ -91,19 +93,63 @@ export default function ShareButtons({
     const labelClass = compact ? styles.labelCompact : styles.label;
     const buttonClass = compact ? `${styles.shareButton} ${styles.shareButtonCompact}` : styles.shareButton;
 
+    const badgeMarkdown = '[![software craftsmanship - value driven · ai-augmented](https://img.shields.io/badge/software%20craft-value--driven%20%C2%B7%20ai--augmented-4c1d95?style=flat-square&labelColor=111827)](https://ai-manifesto.software-craftsmanship.dev)';
+    const [copied, setCopied] = React.useState(false);
+
+    const copyToClipboard = async () => {
+        try {
+            await navigator.clipboard.writeText(badgeMarkdown);
+            setCopied(true);
+            setTimeout(() => setCopied(false), 2000);
+        } catch (err) {
+            console.error('Failed to copy:', err);
+        }
+    };
+
     return (
-        <div className={containerClass}>
-            {!compact && <span className={labelClass}>Share:</span>}
-            {shareLinks.map((link) => (
-                <button
-                    key={link.name}
-                    onClick={() => handleShare(link)}
-                    title={`Share on ${link.name}`}
-                    className={buttonClass}
-                >
-                    {link.icon}
-                </button>
-            ))}
+        <div className={styles.wrapper}>
+            {showBadge && !compact && (
+                <div className={styles.badgeContainer}>
+                    <a
+                        href="https://ai-manifesto.software-craftsmanship.dev"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={styles.badgeLink}
+                    >
+                        <img
+                            src="https://img.shields.io/badge/software%20craft-value--driven%20%C2%B7%20ai--augmented-4c1d95?style=flat-square&labelColor=111827"
+                            alt="software craftsmanship - value driven · ai-augmented"
+                            className={styles.badge}
+                        />
+                    </a>
+                    <div className={styles.markdownContainer}>
+                        <label className={styles.markdownLabel}>Embed on your page:</label>
+                        <div className={styles.markdownCodeWrapper}>
+                            <code className={styles.markdownCode}>{badgeMarkdown}</code>
+                            <button
+                                onClick={copyToClipboard}
+                                className={styles.copyButton}
+                                title="Copy to clipboard"
+                            >
+                                {copied ? '✓' : '📋'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+            <div className={containerClass}>
+                {!compact && <span className={labelClass}>Share:</span>}
+                {shareLinks.map((link) => (
+                    <button
+                        key={link.name}
+                        onClick={() => handleShare(link)}
+                        title={`Share on ${link.name}`}
+                        className={buttonClass}
+                    >
+                        {link.icon}
+                    </button>
+                ))}
+            </div>
         </div>
     );
 }

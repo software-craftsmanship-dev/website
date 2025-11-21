@@ -497,9 +497,9 @@ export function SignManifest() {
 
                     {/* Show ShareButtons after a successful name-only signature (or if sessionStorage indicates prior signing) */}
                     {hasNameOnlySignature && !showNameOnlyForm && (
-                        <div style={{ marginTop: '1.5rem', paddingTop: '1rem', borderTop: '1px solid rgba(180, 140, 255, 0.12)' }}>
+                        <div className={styles.shareSection}>
                             <h3>You have signed the Manifesto.</h3>
-                                <ShareButtons />
+                            <ShareButtons showBadge={true} />
                         </div>
                     )}
                 </>
@@ -532,7 +532,7 @@ export function SignManifest() {
                     {signature && (
                         <div className={styles.shareSection}>
                             <h3>You have signed the Manifesto.</h3>
-                            <ShareButtons />
+                            <ShareButtons showBadge={true} />
                         </div>
                     )}
                 </div>
