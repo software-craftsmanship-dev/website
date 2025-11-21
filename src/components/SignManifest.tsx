@@ -369,7 +369,7 @@ export function SignManifest() {
     }
 
     return (
-        <div className={styles.signManifest}>
+        <>
             {showReLoginNotice && (
                 <div className={styles.reLoginNotice}>
                     You previously signed. Log in again to withdraw or update your signature.
@@ -537,7 +537,7 @@ export function SignManifest() {
                     )}
                 </div>
             )}
-        </div>
+        </>
     );
 }
 

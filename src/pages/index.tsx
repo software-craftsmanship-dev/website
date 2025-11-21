@@ -57,8 +57,7 @@ export default function Home(): ReactNode {
                         <Heading as="h1" className={styles.manifestTitle}>
                             <span className={styles.preamble}>Manifesto for</span>
                             <span className={styles.coreSubject}>
-                                AI-Augmented <br className={styles.mobileBreak} />
-                                Software Craftsmanship
+                                AI-Augmented Software Craftsmanship
                             </span>
                         </Heading>
                     </header>
@@ -94,10 +93,7 @@ export default function Home(): ReactNode {
                         </article>
                     )}
 
-                    <div className={styles.signersSection}>
-                        <SignersList />
-                    </div>
-
+                    <SignersList />
                 </section>
             </main>
         </Layout>

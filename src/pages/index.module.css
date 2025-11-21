@@ -3,25 +3,6 @@
  * and scoped locally.
  */
 
-.heroBanner {
-    padding: 4rem 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-}
-
-@media screen and (max-width: 996px) {
-    .heroBanner {
-        padding: 2rem;
-    }
-}
-
-.buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .manifestContainer {
     display: flex;
     align-items: normal;
@@ -68,12 +49,6 @@
     font-weight: 700;
 }
 
-.manifestSubtitle {
-    margin: 0;
-    font-size: 1rem;
-    color: var(--manifest-subtitle-color);
-}
-
 .manifestContent {
     margin-top: 1.5rem;
     color: var(--manifest-text-color);
@@ -104,10 +79,6 @@
     font-size: 1.4rem;
     margin-bottom: 1rem;
     color: var(--manifest-heading-color);
-}
-
-.manifestContent p {
-    margin-bottom: 0.9rem;
 }
 
 .manifestContent ol {
@@ -193,16 +164,4 @@
     font-weight: 400;
 }
 
-/* Spacing utilities for signatories page */
-.signatureSection {
-    margin-top: 1rem;
-}
 
-.signersSection {
-    margin-top: 1.5rem;
-}
-
-/* Also used on homepage for signers list */
-.signersSection {
-    margin-top: 1.25rem;
-}
