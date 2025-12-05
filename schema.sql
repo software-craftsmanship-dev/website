@@ -112,18 +112,14 @@ $$ LANGUAGE plpgsql SECURITY DEFINER;
 CREATE OR REPLACE FUNCTION validate_captcha_answer(p_answer TEXT, p_answer_hash TEXT)
 RETURNS BOOLEAN AS $$
 DECLARE
-v_salt_today TEXT;
-  v_salt_yesterday TEXT;
-  v_hash_today TEXT;
-  v_hash_yesterday TEXT;
+    v_salt_today TEXT;
+    v_hash_today TEXT;
 BEGIN
-  v_salt_today := '-manifesto-salt-' || TO_CHAR(CURRENT_DATE, 'YYYY-MM-DD');
-  v_salt_yesterday := '-manifesto-salt-' || TO_CHAR(CURRENT_DATE - INTERVAL '1 day', 'YYYY-MM-DD');
+    v_salt_today := '-manifesto-salt-' || TO_CHAR(CURRENT_DATE, 'YYYY-MM-DD');
+    v_hash_today := encode(digest(TRIM(p_answer) || v_salt_today, 'sha256'), 'hex');
 
-  v_hash_today := encode(digest(TRIM(p_answer) || v_salt_today, 'sha256'), 'hex');
-  v_hash_yesterday := encode(digest(TRIM(p_answer) || v_salt_yesterday, 'sha256'), 'hex');
-
-RETURN (v_hash_today = p_answer_hash) OR (v_hash_yesterday = p_answer_hash);
+    -- Only accept today's answers (reduced from 48h to 24h window)
+    RETURN (v_hash_today = p_answer_hash);
 END;
 $$ LANGUAGE plpgsql SECURITY DEFINER;
 
