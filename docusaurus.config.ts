@@ -100,6 +100,7 @@ const config: Config = {
   customFields: {
     supabaseUrl: process.env.SUPABASE_URL,
     supabaseAnonKey: process.env.SUPABASE_ANON_KEY,
+    simulateSupabaseDown: process.env.SIMULATE_SUPABASE_DOWN === 'true',
   },
 };
 

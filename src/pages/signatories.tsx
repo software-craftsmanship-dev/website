@@ -20,7 +20,7 @@ export default function SignatoriesPage() {
                 </div>
 
                 <div className={styles.signersSection}>
-                    <SignersList variant="full" />
+                    <SignersList variant="full" showErrorBanner={true} />
                 </div>
             </main>
         </Layout>
