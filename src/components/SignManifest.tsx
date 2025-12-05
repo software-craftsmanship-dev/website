@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useSupabase } from '@site/src/utils/supabase';
 import PrivacySettings from './PrivacySettings';
 import ShareButtons from './ShareButtons';
@@ -23,11 +24,17 @@ interface CaptchaChallenge {
 }
 
 export function SignManifest() {
+    const { siteConfig } = useDocusaurusContext();
     const supabase = useSupabase();
+
+    // Check if we should simulate Supabase being down (for testing)
+    const simulateDown = Boolean(siteConfig.customFields?.simulateSupabaseDown);
+
     const [session, setSession] = useState<Session | null>(null);
     const [loading, setLoading] = useState(true);
     const [signature, setSignature] = useState<Signature | null>(null);
     const [checkingSignature, setCheckingSignature] = useState(false);
+    const [supabaseUnavailable, setSupabaseUnavailable] = useState(false);
 
     // Name-only signature state
     const [showNameOnlyForm, setShowNameOnlyForm] = useState(false);
@@ -45,14 +52,30 @@ export function SignManifest() {
 
     // Load session
     useEffect(() => {
-        if (!supabase) return;
+        if (!supabase) {
+            setLoading(false);
+            return;
+        }
 
         const fetchSession = async () => {
-            const { data, error } = await supabase.auth.getSession();
-            if (error) {
-                console.error('Error fetching session:', error);
-            } else {
-                setSession(data.session);
+            try {
+                // Simulate Supabase being down for testing
+                if (simulateDown) {
+                    console.warn('🧪 [TEST] Simulating Supabase outage (set SIMULATE_SUPABASE_DOWN=false in .env to disable)');
+                    throw new Error('Simulated Supabase outage');
+                }
+
+                const { data, error } = await supabase.auth.getSession();
+                if (error) {
+                    console.error('Error fetching session:', error);
+                    setSupabaseUnavailable(true);
+                } else {
+                    setSession(data.session);
+                    setSupabaseUnavailable(false);
+                }
+            } catch (err) {
+                console.error('Supabase connection error:', err);
+                setSupabaseUnavailable(true);
             }
             setLoading(false);
         };
@@ -377,6 +400,11 @@ export function SignManifest() {
 
     return (
         <>
+            {supabaseUnavailable && (
+                <div className={styles.warningBanner}>
+                    Service temporarily unavailable. Signing is currently disabled. Please try again later.
+                </div>
+            )}
             {showReLoginNotice && (
                 <div className={styles.reLoginNotice}>
                     You previously signed. Log in again to withdraw or update your signature.
@@ -386,15 +414,24 @@ export function SignManifest() {
             {!showSignedState ? (
                 <>
                     <div className={styles.signButtons}>
-                        <button className="button button--primary" onClick={() => handleLogin('github')}>
+                        <button
+                            className="button button--primary"
+                            onClick={() => handleLogin('github')}
+                            disabled={supabaseUnavailable}
+                        >
                             Sign with GitHub
                         </button>
-                        <button className="button button--secondary" onClick={() => handleLogin('linkedin_oidc')}>
+                        <button
+                            className="button button--secondary"
+                            onClick={() => handleLogin('linkedin_oidc')}
+                            disabled={supabaseUnavailable}
+                        >
                             Sign with LinkedIn
                         </button>
                         <button
                             className={`button button--secondary ${styles.nameOnlyButton}`}
                             onClick={() => setShowNameOnlyForm(!showNameOnlyForm)}
+                            disabled={supabaseUnavailable}
                         >
                             {showNameOnlyForm ? 'Cancel' : 'Sign with name only'}
                         </button>

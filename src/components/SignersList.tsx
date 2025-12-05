@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import { useSupabase } from '@site/src/utils/supabase';
 import styles from './SignersList.module.css';
 import mockSignatures from '@site/src/data/mockSignatures.json';
+import cachedSignatories from '@site/src/data/cachedSignatories.json';
 
 interface Signer {
     id: string;
@@ -22,15 +24,25 @@ const USE_MOCK_DATA = process.env.NODE_ENV === 'development';
 
 interface SignersListProps {
     variant?: 'compact' | 'full';
+    showErrorBanner?: boolean;
 }
 
-export default function SignersList({ variant = 'compact' }: SignersListProps) {
+export default function SignersList({ variant = 'compact', showErrorBanner = false }: SignersListProps) {
+    const { siteConfig } = useDocusaurusContext();
     const supabase = useSupabase();
-    const [signers, setSigners] = useState<Signer[]>(() => (USE_MOCK_DATA ? (mockSignatures as Signer[]) : []));
-    const [loading, setLoading] = useState(() => !USE_MOCK_DATA && !!supabase);
+
+    // Check if we should simulate Supabase being down (for testing)
+    const simulateDown = Boolean(siteConfig.customFields?.simulateSupabaseDown);
+    const shouldUseMockData = USE_MOCK_DATA && !simulateDown;
+
+    const [signers, setSigners] = useState<Signer[]>(() => (shouldUseMockData ? (mockSignatures as Signer[]) : []));
+    const [loading, setLoading] = useState(() => !shouldUseMockData && !!supabase);
+    const [error, setError] = useState<string | null>(null);
+    const [usingCache, setUsingCache] = useState(false);
 
     useEffect(() => {
-        if (USE_MOCK_DATA) {
+        // Query parameter takes precedence over USE_MOCK_DATA
+        if (shouldUseMockData) {
             console.log('Loading mock signatures:', mockSignatures.length, 'entries');
             return;
         }
@@ -41,26 +53,52 @@ export default function SignersList({ variant = 'compact' }: SignersListProps) {
 
         const load = async () => {
             setLoading(true);
-            const { data, error } = await supabase
-                .from('signatures')
-                .select(
-                    'id, name, avatar_url, profile_url, created_at, privacy_level, auth_provider, name_only_location'
-                )
-                .order('created_at', { ascending: false })
-                .limit(100);
-            if (error) {
-                console.error('Failed to load signatures', error);
-            } else {
+            setError(null);
+            setUsingCache(false);
+
+            try {
+                // Simulate Supabase being down for testing
+                if (simulateDown) {
+                    console.warn('🧪 [TEST] Simulating Supabase outage (set SIMULATE_SUPABASE_DOWN=false in .env to disable)');
+                    throw new Error('Simulated Supabase outage');
+                }
+
+                const { data, error: supabaseError } = await supabase
+                    .from('signatures')
+                    .select(
+                        'id, name, avatar_url, profile_url, created_at, privacy_level, auth_provider, name_only_location'
+                    )
+                    .order('created_at', { ascending: false })
+                    .limit(100);
+
+                if (supabaseError) {
+                    throw supabaseError;
+                }
+
                 setSigners(data || []);
+                console.log('Loaded', data?.length || 0, 'signatures from Supabase');
+            } catch (err) {
+                console.error('Failed to load signatures from Supabase:', err);
+                setError('Connection to Supabase failed');
+
+                // Fallback to cached data
+                if (cachedSignatories && cachedSignatories.signatories) {
+                    console.log('Falling back to cached data:', cachedSignatories.signatories.length, 'entries');
+                    setSigners(cachedSignatories.signatories as Signer[]);
+                    setUsingCache(true);
+                } else {
+                    console.error('No cached data available');
+                }
+            } finally {
+                setLoading(false);
             }
-            setLoading(false);
         };
         load();
 
         const handler = () => load();
         window.addEventListener('signature-changed', handler);
         return () => window.removeEventListener('signature-changed', handler);
-    }, [supabase]);
+    }, [supabase, simulateDown]);
 
     if (loading) return <div>Loading signers…</div>;
 
@@ -75,6 +113,17 @@ export default function SignersList({ variant = 'compact' }: SignersListProps) {
 
     return (
         <>
+            {showErrorBanner && error && usingCache && (
+                <div className={styles.errorBanner}>
+                    {error}. Showing cached signatories
+                    {cachedSignatories.cached_at && (
+                        <span className={styles.cacheDate}>
+                            {' '}
+                            (as of {new Date(cachedSignatories.cached_at).toLocaleString('en-US')})
+                        </span>
+                    )}
+                </div>
+            )}
             <h3 className={styles.heading}></h3>
             <div className={styles.container}>
                 <ul className={gridClass}>
